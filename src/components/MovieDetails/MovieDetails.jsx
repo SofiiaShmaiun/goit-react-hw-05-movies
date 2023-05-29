@@ -1,16 +1,16 @@
 import { Suspense, useEffect, useState } from 'react';
 import {
   useParams,
-  // useLocation,
+  useLocation,
   NavLink,
   Outlet,
-  // Link,
+  Link,
 } from 'react-router-dom';
 import { getDetails } from 'services/api';
 
 const MovieDetails = () => {
-  // const location = useLocation();
-  // const backLink = location.state?.from ?? location.state.from.search ?? '/movies';
+  const location = useLocation();
+  const backLink = location.state?.from ?? location.state.from.search ?? '/movies';
   const { movieId } = useParams();
   const [details, seDetails] = useState(null);
 
@@ -30,7 +30,7 @@ const MovieDetails = () => {
 
   return (
     <section>
-      {/* <Link to={backLink}>Go back</Link> */}
+      <Link to={backLink}>Go back</Link>
       {details !== null && (
         <section>
           <h2>
