@@ -1,15 +1,15 @@
 import { Suspense, useEffect, useState } from 'react';
 import {
   useParams,
-  useLocation,
+  // useLocation,
   NavLink,
   Outlet,
-  Link,
+  // Link,
 } from 'react-router-dom';
 import { getDetails } from 'services/api';
 
 const MovieDetails = () => {
-  const location = useLocation();
+  // const location = useLocation();
   // const backLink = location.state?.from ?? location.state.from.search ?? '/movies';
   const { movieId } = useParams();
   const [details, seDetails] = useState(null);
