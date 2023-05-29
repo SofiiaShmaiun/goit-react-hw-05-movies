@@ -10,27 +10,27 @@ import { getDetails } from 'services/api';
 
 const MovieDetails = () => {
   const location = useLocation();
-  const backLink = location.state?.from ?? '/movies';
+  // const backLink = location.state?.from ?? location.state.from.search ?? '/movies';
   const { movieId } = useParams();
   const [details, seDetails] = useState(null);
 
   useEffect(() => {
-    fetchDetails();
-  }, []);
+    const fetchDetails = () => {
+      getDetails(movieId)
+        .then(response => {
+          seDetails(response);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    };
 
-  const fetchDetails = () => {
-    getDetails(movieId)
-      .then(response => {
-        seDetails(response);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  };
+    fetchDetails();
+  }, [movieId]);
 
   return (
     <section>
-      <Link to={backLink}>Go back</Link>
+      {/* <Link to={backLink}>Go back</Link> */}
       {details !== null && (
         <section>
           <h2>

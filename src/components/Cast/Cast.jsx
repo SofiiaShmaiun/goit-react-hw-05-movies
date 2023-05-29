@@ -7,18 +7,18 @@ const Cast = () => {
   const { movieId } = useParams();
 
   useEffect(() => {
-    fetchCast();
-  }, []);
+    const fetchCast = () => {
+      getCast(movieId)
+        .then(response => {
+          setCast(response);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    };
 
-  const fetchCast = () => {
-    getCast(movieId)
-      .then(response => {
-        setCast(response);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  };
+    fetchCast();
+  }, [movieId]);
 
   return (
     <section>

@@ -7,18 +7,18 @@ const Reviews = () => {
   const { movieId } = useParams();
 
   useEffect(() => {
-    fetchCast();
-  }, []);
+    const fetchCast = () => {
+      getReview(movieId)
+        .then(response => {
+          setReview(response);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    };
 
-  const fetchCast = () => {
-    getReview(movieId)
-      .then(response => {
-        setReview(response);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  };
+    fetchCast();
+  }, [movieId]);
 
   return (
     <section>
