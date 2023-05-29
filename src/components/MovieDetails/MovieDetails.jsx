@@ -10,7 +10,7 @@ import { getDetails } from 'services/api';
 
 const MovieDetails = () => {
   const location = useLocation();
-  const backLink = location.state?.from ?? location.state.from.search ?? '/movies';
+  const backLink = location.state?.from ?? '/movies';
   const { movieId } = useParams();
   const [details, seDetails] = useState(null);
 
