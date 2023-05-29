@@ -1,7 +1,12 @@
 import { Suspense, useEffect, useState } from 'react';
-import { useParams, useLocation, NavLink, Outlet } from 'react-router-dom';
+import {
+  useParams,
+  useLocation,
+  NavLink,
+  Outlet,
+  Link,
+} from 'react-router-dom';
 import { getDetails } from 'services/api';
-import { BackLink } from '../BackLink/BackLink';
 
 const MovieDetails = () => {
   const location = useLocation();
@@ -25,7 +30,7 @@ const MovieDetails = () => {
 
   return (
     <section>
-      <BackLink backLink={backLink} />
+      <Link to={backLink}>Go back</Link>
       {details !== null && (
         <section>
           <h2>
@@ -50,7 +55,6 @@ const MovieDetails = () => {
           </div>
         </section>
       )}
-
       <div>
         <p>Additional information</p>
         <ul>
@@ -62,7 +66,6 @@ const MovieDetails = () => {
           </li>
         </ul>
       </div>
-
       <Suspense fallback={<div>Loading subpage...</div>}>
         <Outlet />
       </Suspense>
